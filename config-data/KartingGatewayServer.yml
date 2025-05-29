@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: KartingGatewayServer
+
+  cloud:
+    gateway:
+      routes:
+        - id: tarifa
+          uri: lb://KartingTarifa
+          predicates:
+            - Path=/tarifa/**
+        - id: reserva
+          uri: lb://KartingReserva
+          predicates:
+            - Path=/reserva/**

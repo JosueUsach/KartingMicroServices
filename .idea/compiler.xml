@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="KartingEurekaServer" />
+        <module name="KartingGatewayServer" />
+        <module name="KartingConfigServer" />
+      </profile>
+      <profile name="Annotation profile for KartingDescuentoDiaEspecial" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="KartingTarifa" />
+        <module name="KartingReporte" />
+        <module name="KartingDescuentoFrecuencia" />
+        <module name="KartingReserva" />
+        <module name="KartingDescuentoGrupo" />
+        <module name="KartingRack" />
+        <module name="KartingDescuentoDiaEspecial" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="KartingConfigServer" options="-parameters" />
+      <module name="KartingDescuentoDiaEspecial" options="-parameters" />
+      <module name="KartingDescuentoFrecuencia" options="-parameters" />
+      <module name="KartingDescuentoGrupo" options="-parameters" />
+      <module name="KartingEurekaServer" options="-parameters" />
+      <module name="KartingGatewayServer" options="-parameters" />
+      <module name="KartingRack" options="-parameters" />
+      <module name="KartingReporte" options="-parameters" />
+      <module name="KartingReserva" options="-parameters" />
+      <module name="KartingTarifa" options="-parameters" />
+    </option>
+  </component>
+</project>
