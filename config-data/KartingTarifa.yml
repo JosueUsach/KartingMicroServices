@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DBNAME}
+    url: jdbc:mysql://${DB_HOST:mysql}:3306/tarifadb
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 eureka:
