@@ -11,7 +11,7 @@
         <module name="KartingGatewayServer" />
         <module name="KartingConfigServer" />
       </profile>
-      <profile name="Annotation profile for KartingDescuentoDiaEspecial" enabled="true">
+      <profile name="Annotation profile for KartingTarifa" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
