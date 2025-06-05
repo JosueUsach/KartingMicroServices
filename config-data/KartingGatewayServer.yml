@@ -28,28 +28,28 @@ spring:
         - id: descuentoGrupo
           uri: lb://KartingDescuentoGrupo
           predicates:
-            - Path=/descuento-grupo/**
+            - Path=/api/descuento-grupo/**
         - id: descuentoFrecuencia
           uri: lb://KartingDescuentoFrecuencia
           predicates:
-            - Path=/descuento-frecuencia/**
+            - Path=/api/descuento-frecuencia/**
         - id: descuentoDiaEspecial
           uri: lb://KartingDescuentoDiaEspecial
           predicates:
-            - Path=/descuento-dia-especial/**
+            - Path=/api/descuento-dia-especial/**
         - id: rack
           uri: lb://KartingRack
           predicates:
-            - Path=/rack/**
+            - Path=/api/rack/**
         - id: reporte
           uri: lb://KartingReporte
           predicates:
-           - Path=/reporte/**
+           - Path=/api/reporte/**
         - id: tarifa
           uri: lb://KartingTarifa
           predicates:
-            - Path=/tarifa/**
+            - Path=/api/tarifa/**
         - id: reserva
           uri: lb://KartingReserva
           predicates:
-            - Path=/reserva/**
+            - Path=/api/reserva/**
