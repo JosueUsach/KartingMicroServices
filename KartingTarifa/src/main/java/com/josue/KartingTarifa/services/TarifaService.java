@@ -1,15 +1,11 @@
 package com.josue.KartingTarifa.services;
 
 import com.josue.KartingTarifa.entities.TarifaEntity;
-import com.josue.KartingTarifa.repositories.TarifaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class TarifaService {
-	@Autowired
-	private TarifaRepository tarifaRepository;
 
 	// Input: Un entero indicando el tipo de reserva
 	// Description: Devuelve detalles de la reserva segun el tipo

@@ -1,8 +1,6 @@
 package com.josue.KartingDescuentoDiaEspecial.services;
 
 import com.josue.KartingDescuentoDiaEspecial.entities.DescuentoDiaEspecialEntity;
-import com.josue.KartingDescuentoDiaEspecial.repositories.DescuentoDiaEspecialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -12,8 +10,6 @@ import java.util.Set;
 
 @Service
 public class DescuentoDiaEspecialService {
-	@Autowired
-	private DescuentoDiaEspecialRepository descuentoDiaEspecialRepository;
 
 	private static final Set<String> holidays = new HashSet<>();
 
