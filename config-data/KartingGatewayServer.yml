@@ -64,3 +64,8 @@ spring:
           uri: lb://KartingReserva
           predicates:
               - Path=/api/cliente/**
+
+        - id: comprobante
+          uri: lb://KartingReserva
+          predicates:
+              - Path=/api/comprobante/**
