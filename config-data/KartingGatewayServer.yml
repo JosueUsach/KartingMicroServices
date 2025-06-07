@@ -29,27 +29,38 @@ spring:
           uri: lb://KartingDescuentoGrupo
           predicates:
             - Path=/api/descuento-grupo/**
+
         - id: descuentoFrecuencia
           uri: lb://KartingDescuentoFrecuencia
           predicates:
             - Path=/api/descuento-frecuencia/**
+
         - id: descuentoDiaEspecial
           uri: lb://KartingDescuentoDiaEspecial
           predicates:
             - Path=/api/descuento-dia-especial/**
+
         - id: rack
           uri: lb://KartingRack
           predicates:
             - Path=/api/rack/**
+
         - id: reporte
           uri: lb://KartingReporte
           predicates:
            - Path=/api/reporte/**
+
         - id: tarifa
           uri: lb://KartingTarifa
           predicates:
             - Path=/api/tarifa/**
+
         - id: reserva
           uri: lb://KartingReserva
           predicates:
             - Path=/api/reserva/**
+
+        - id: cliente
+          uri: lb://KartingReserva
+          predicates:
+              - Path=/api/cliente/**
