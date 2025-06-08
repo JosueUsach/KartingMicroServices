@@ -1,6 +1,5 @@
 package com.josue.KartingDescuentoDiaEspecial.controllers;
 
-import com.josue.KartingDescuentoDiaEspecial.entities.DescuentoDiaEspecialEntity;
 import com.josue.KartingDescuentoDiaEspecial.services.DescuentoDiaEspecialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

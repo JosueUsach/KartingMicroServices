@@ -26,11 +26,8 @@ public class DescuentoDiaEspecialService {
 
 		DayOfWeek dayOfWeek = date.getDayOfWeek();
 		String monthDay = String.format("%02d-%02d", date.getMonthValue(), date.getDayOfMonth());
-		if  (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY || holidays.contains(monthDay)){
+		if  (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY || holidays.contains(monthDay))
 			descuentoDiaEspecial = 0.1;
-		}
-		else
-			descuentoDiaEspecial = 0.0;
 
 		return descuentoDiaEspecial;
 	}

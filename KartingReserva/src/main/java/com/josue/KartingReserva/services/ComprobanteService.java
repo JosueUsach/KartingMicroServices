@@ -36,7 +36,6 @@ public class ComprobanteService {
 
 		// Costo inicial depende de el numero de vueltas / tiempo maximo
 		Double costoInicial = restTemplate.getForEntity("http://KartingTarifa/apí/tarifa/" + reserva.getTipoReserva(), Double.class).getBody();
-		System.out.println("\ncosto inicial respuesta" + costoInicial + "\n\n"); //Todo: sacar esto
 
 		// Calculo descuento grupo
 		Double descuentoGrupo = restTemplate.getForEntity("http://KartingDescuentoGrupo/api/descuento-grupo/"+ reserva.getCantidadClientes(), Double.class).getBody();

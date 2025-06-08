@@ -1,6 +1,5 @@
 package com.josue.KartingTarifa.services;
 
-import com.josue.KartingTarifa.entities.TarifaEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -11,7 +10,7 @@ public class TarifaService {
 	// Description: Devuelve detalles de la reserva segun el tipo
 	// Output: El costo inicial de una reserva
 	public Double getTarifaByTipo(int tipo) {
-		double tarifa = 0;
+		double tarifa;
 
 		if (tipo == 0)
 			tarifa = 15000;
