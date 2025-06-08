@@ -10,7 +10,6 @@ import java.time.format.DateTimeParseException;
 
 @RestController
 @RequestMapping("/api/descuento-dia-especial")
-@CrossOrigin(origins = "*")
 public class DescuentoDiaEspecialController {
 	@Autowired
 	private DescuentoDiaEspecialService descuentoDiaEspecialService;

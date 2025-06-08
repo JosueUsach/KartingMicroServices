@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/comprobante")
-@CrossOrigin(origins = "*")
 public class ComprobanteController {
 	@Autowired
 	private ComprobanteRepository comprobanteRepository;

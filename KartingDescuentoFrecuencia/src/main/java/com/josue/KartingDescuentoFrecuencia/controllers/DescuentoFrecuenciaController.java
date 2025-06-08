@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/descuento-frecuencia")
-@CrossOrigin(origins = "*")
 public class DescuentoFrecuenciaController {
 	@Autowired
 	private DescuentoFrecuenciaService descuentoFrecuenciaService;

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tarifa")
-@CrossOrigin(origins = "*")
 public class TarifaController {
 	@Autowired
 	TarifaService tarifaService;
