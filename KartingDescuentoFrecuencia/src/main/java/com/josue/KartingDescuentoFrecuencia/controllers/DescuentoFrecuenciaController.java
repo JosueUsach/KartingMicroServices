@@ -1,6 +1,5 @@
 package com.josue.KartingDescuentoFrecuencia.controllers;
 
-import com.josue.KartingDescuentoFrecuencia.entities.DescuentoFrecuenciaEntity;
 import com.josue.KartingDescuentoFrecuencia.services.DescuentoFrecuenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ public class DescuentoFrecuenciaController {
 
 	@GetMapping("/{frecuencia}")
 	public ResponseEntity<Double> getDescuentoFrecuencia(@PathVariable int frecuencia){
-		DescuentoFrecuenciaEntity descuento = descuentoFrecuenciaService.calcularDescuentoFrecuencia(frecuencia);
-		return ResponseEntity.ok(descuento.getDescuento());
+		double descuento = descuentoFrecuenciaService.calcularDescuentoFrecuencia(frecuencia);
+		return ResponseEntity.ok(descuento);
 	}
 }

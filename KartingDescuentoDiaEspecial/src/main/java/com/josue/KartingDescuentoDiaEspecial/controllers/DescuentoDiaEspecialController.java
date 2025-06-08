@@ -17,10 +17,10 @@ public class DescuentoDiaEspecialController {
 	private DescuentoDiaEspecialService descuentoDiaEspecialService;
 
 	@GetMapping("/{fecha}")
-	public ResponseEntity<DescuentoDiaEspecialEntity> getDiaEspecial(@PathVariable String fecha) {
+	public ResponseEntity<Double> getDiaEspecial(@PathVariable String fecha) {
 		try {
 			LocalDate date = LocalDate.parse(fecha); // Expects format: yyyy-MM-dd
-			DescuentoDiaEspecialEntity descuento = descuentoDiaEspecialService.esDiaEspecial(date);
+			double descuento = descuentoDiaEspecialService.esDiaEspecial(date);
 			return ResponseEntity.ok(descuento);
 		} catch (DateTimeParseException e) {
 			return ResponseEntity.badRequest().build();

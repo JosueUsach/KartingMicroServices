@@ -1,6 +1,5 @@
 package com.josue.KartingDescuentoGrupo.controllers;
 
-import com.josue.KartingDescuentoGrupo.entities.DescuentoGrupoEntity;
 import com.josue.KartingDescuentoGrupo.services.DescuentoGrupoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ public class DescuentoGrupoController {
 
 	@GetMapping("/{cantidadClientes}")
 	public ResponseEntity<Double> getDescuentoGrupo(@PathVariable int cantidadClientes) {
-		DescuentoGrupoEntity descuento = descuentoGrupoService.calcularDescuentoGrupo(cantidadClientes);
-		return ResponseEntity.ok(descuento.getDescuento());
+		double descuento = descuentoGrupoService.calcularDescuentoGrupo(cantidadClientes);
+		return ResponseEntity.ok(descuento);
 	}
 }

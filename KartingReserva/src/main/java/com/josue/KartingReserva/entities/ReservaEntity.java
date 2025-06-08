@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-
 public class ReservaEntity {
 
 	@Id

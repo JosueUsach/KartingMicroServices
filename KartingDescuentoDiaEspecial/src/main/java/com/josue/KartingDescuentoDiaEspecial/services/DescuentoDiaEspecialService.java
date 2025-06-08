@@ -1,6 +1,5 @@
 package com.josue.KartingDescuentoDiaEspecial.services;
 
-import com.josue.KartingDescuentoDiaEspecial.entities.DescuentoDiaEspecialEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -12,26 +11,27 @@ import java.util.Set;
 public class DescuentoDiaEspecialService {
 
 	private static final Set<String> holidays = new HashSet<>();
-
+	// Feriados de ejemplo
 	static {
 		holidays.add("01-01"); // Año nuevo
 		holidays.add("12-25"); // Navidad
 		holidays.add("09-18"); // Fiestas patrias
 	}
 
-	public DescuentoDiaEspecialEntity esDiaEspecial(LocalDate date) {
-		DescuentoDiaEspecialEntity descuentoDiaEspecial = new DescuentoDiaEspecialEntity();
+	// Input: Una fecha
+	// Description: Calcula el descuento que se aplica si el dia introducido es un fin de semana o un feriado
+	// Output: El porcentaje de descuento para la reserva
+	public Double esDiaEspecial(LocalDate date) {
+		double descuentoDiaEspecial = 0.0;
 
 		DayOfWeek dayOfWeek = date.getDayOfWeek();
 		String monthDay = String.format("%02d-%02d", date.getMonthValue(), date.getDayOfMonth());
 		if  (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY || holidays.contains(monthDay)){
-			descuentoDiaEspecial.setEsEspecial(true);
-			descuentoDiaEspecial.setDescuento(0.1);
+			descuentoDiaEspecial = 0.1;
 		}
-		else{
-			descuentoDiaEspecial.setEsEspecial(false);
-			descuentoDiaEspecial.setDescuento(0.0);
-		}
+		else
+			descuentoDiaEspecial = 0.0;
+
 		return descuentoDiaEspecial;
 	}
 
