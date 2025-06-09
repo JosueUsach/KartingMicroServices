@@ -14,6 +14,12 @@ public class ReservaController {
 	@Autowired
 	private ReservaService reservaService;
 
+	@GetMapping("/{id}")
+	public ResponseEntity<ReservaEntity> getReservaById(@PathVariable Long id){
+		ReservaEntity reserva = reservaService.getReservaById(id);
+		return ResponseEntity.ok(reserva);
+	}
+
 	@GetMapping("/")
 	public ResponseEntity<List<ReservaEntity>> getAllReservas(){
 		List<ReservaEntity> reservas = reservaService.getAllReservas();

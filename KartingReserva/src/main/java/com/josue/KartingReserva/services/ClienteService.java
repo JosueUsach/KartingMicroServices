@@ -45,7 +45,6 @@ public class ClienteService {
 
 	// Input: La ID de un cliente
 	// Description: Busca al cliente con esa ID, si lo encuentra, lo elimina
-	// Output: Un booleano indicando si se logro borrar al cliente
 	public void borrarCliente(Long id){
 		if (clienteRepository.existsById(id)) {
 			clienteRepository.deleteById(id);

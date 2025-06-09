@@ -12,32 +12,41 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/comprobante")
 public class ComprobanteController {
-	@Autowired
-	private ComprobanteRepository comprobanteRepository;
-	@Autowired
-	private ComprobanteService comprobanteService;
+    @Autowired
+    private ComprobanteService comprobanteService;
 
-	@GetMapping("/")
-	public ResponseEntity<List<ComprobanteEntity>> getAllComprobantes(){
-		List<ComprobanteEntity> comprobantes = comprobanteRepository.findAll();
-		return ResponseEntity.ok(comprobantes);
-	}
+    @GetMapping("/")
+    public ResponseEntity<List<ComprobanteEntity>> getAllComprobantes(){
+        List<ComprobanteEntity> comprobantes = comprobanteService.findAll();
+        return ResponseEntity.ok(comprobantes);
+    }
 
-	@PostMapping("/")
-	public ResponseEntity<ComprobanteEntity> registerComprobante(@RequestBody ComprobanteEntity comprobante){
-		ComprobanteEntity comprobanteGuardado = comprobanteService.crearComprobante(comprobante);
-		return ResponseEntity.ok(comprobanteGuardado);
-	}
+    @PostMapping("/")
+    public ResponseEntity<ComprobanteEntity> registerComprobante(@RequestBody ComprobanteEntity comprobante){
+        ComprobanteEntity comprobanteGuardado = comprobanteService.crearComprobante(comprobante);
+        return ResponseEntity.ok(comprobanteGuardado);
+    }
 
-	@GetMapping("/reporteVueltas")
-	public ResponseEntity<List<Object[]>> getReservationSummaryReport(){
-		List<Object[]> resultado = comprobanteRepository.getReservationSummaryReport();
-		return ResponseEntity.ok(resultado);
-	}
+    @GetMapping("/buscar")
+    public ResponseEntity<ComprobanteEntity> findComprobanteByRutAndReserva(
+            @RequestParam String rutCliente,
+            @RequestParam Long idReserva) {
+        ComprobanteEntity comprobante = comprobanteService.findByRutClienteAndIdReserva(rutCliente, idReserva);
+        if (comprobante != null) {
+            return ResponseEntity.ok(comprobante);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
-	@GetMapping("/reporteGrupo")
-	public ResponseEntity<List<Object[]>> getReservationGroupReport(){
-		List<Object[]> resultado = comprobanteRepository.getRiderGroupSizeReport();
-		return ResponseEntity.ok(resultado);
-	}
+    @GetMapping("/reporteVueltas")
+    public ResponseEntity<List<Object[]>> getReservationSummaryReport(){
+        List<Object[]> resultado = comprobanteService.getReservationSummaryReport();
+        return ResponseEntity.ok(resultado);
+    }
+    
+    @GetMapping("/reporteGrupo")
+    public ResponseEntity<List<Object[]>> getReservationGroupReport(){
+        List<Object[]> resultado = comprobanteService.getRiderGroupSizeReport();
+        return ResponseEntity.ok(resultado);
+    }
 }

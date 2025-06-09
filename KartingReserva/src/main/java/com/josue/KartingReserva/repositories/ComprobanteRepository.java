@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public interface ComprobanteRepository extends JpaRepository<ComprobanteEntity, Long> {
 
+	public ComprobanteEntity findByRutClienteAndIdReserva(String rutCliente, Long idReserva);
+
 	@Query(value = "SELECT " +
 			"CASE " +
 			"   WHEN costo_inicial = 15000 THEN '10 vueltas o máx 10 min' " +

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ComprobanteService {
@@ -45,8 +46,8 @@ public class ComprobanteService {
 
 		// Calculo decuento cumpleaños
 		double descuentoCumple = 0.0;
-		boolean isBirthday = (cliente.getFechaNacimiento().getDayOfMonth() == LocalDate.now().getDayOfMonth()
-				&& cliente.getFechaNacimiento().getMonthValue() == LocalDate.now().getMonthValue());
+		boolean isBirthday = (cliente.getFechaNacimiento().getDayOfMonth() == reserva.getTiempoInicio().getDayOfMonth()
+				&& cliente.getFechaNacimiento().getMonthValue() == reserva.getTiempoInicio().getMonthValue());
 
 		if (isBirthday)
 			descuentoCumple = 0.5;
@@ -70,6 +71,7 @@ public class ComprobanteService {
 			// Se guardan todos los datos del cliente y su comprobante
 			comprobante.setNombreCliente(cliente.getNombreCliente());
 			comprobante.setMailCliente(cliente.getMailCliente());
+			comprobante.setCheckCumple(isBirthday);
 			comprobante.setCostoInicial(costoInicial);
 			comprobante.setDescuentoGrupo(descuentoGrupo);
 			comprobante.setDescuentoFrecuencia(descuentoFrecuencia);
@@ -80,5 +82,24 @@ public class ComprobanteService {
 
 			return comprobanteRepository.save(comprobante);
 		}
+	}
+
+	public ComprobanteEntity findByRutClienteAndIdReserva(String rutCliente, Long idReserva) {
+		ComprobanteEntity comprobante = comprobanteRepository.findByRutClienteAndIdReserva(rutCliente, idReserva);
+		if (comprobante != null)
+			return comprobante;
+		return null;
+	}
+
+	public List<ComprobanteEntity> findAll(){
+		return comprobanteRepository.findAll();
+	}
+
+	public List<Object[]> getReservationSummaryReport(){
+		return comprobanteRepository.getReservationSummaryReport();
+	}
+
+	public List<Object[]> getRiderGroupSizeReport(){
+		return comprobanteRepository.getRiderGroupSizeReport();
 	}
 }

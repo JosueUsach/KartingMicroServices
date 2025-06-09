@@ -12,4 +12,13 @@ const getGroupReports = () => {
 	return httpClient.get('/api/reporte/reporteGrupo');
 }
 
-export default { saveReceipt, getLapReports, getGroupReports };
+const findReceiptByRutAndReserva = (rutCliente, idReserva) => {
+    return httpClient.get(`/api/comprobante/buscar`, {
+        params: {
+            rutCliente,
+            idReserva,
+        },
+    });
+};
+
+export default { saveReceipt, getLapReports, getGroupReports, findReceiptByRutAndReserva };
