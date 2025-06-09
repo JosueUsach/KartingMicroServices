@@ -35,7 +35,7 @@ public class ComprobanteService {
 				.orElseThrow(() -> new RuntimeException("Reserva with ID " + comprobante.getIdReserva() + " not found"));
 
 		// Costo inicial depende de el numero de vueltas / tiempo maximo
-		Double costoInicial = restTemplate.getForEntity("http://KartingTarifa/apí/tarifa/" + reserva.getTipoReserva(), Double.class).getBody();
+		Double costoInicial = restTemplate.getForEntity("http://KartingTarifa/api/tarifa/" + reserva.getTipoReserva(), Double.class).getBody();
 
 		// Calculo descuento grupo
 		Double descuentoGrupo = restTemplate.getForEntity("http://KartingDescuentoGrupo/api/descuento-grupo/"+ reserva.getCantidadClientes(), Double.class).getBody();
@@ -52,7 +52,7 @@ public class ComprobanteService {
 			descuentoCumple = 0.5;
 
 		// Calculo descuento dia especial
-		Double descuentoDiaEspecial = restTemplate.getForEntity("http://KartingDescuentoDiaEspecial/api/descuento-dia-especial/"+ reserva.getTipoReserva(), Double.class).getBody();
+		Double descuentoDiaEspecial = restTemplate.getForEntity("http://KartingDescuentoDiaEspecial/api/descuento-dia-especial/"+ reserva.getTiempoInicio(), Double.class).getBody();
 
 		// Calculo de cada descuento sobre el costo inicial
 		if (costoInicial == null || descuentoGrupo == null || descuentoFrecuencia == null || descuentoDiaEspecial == null){

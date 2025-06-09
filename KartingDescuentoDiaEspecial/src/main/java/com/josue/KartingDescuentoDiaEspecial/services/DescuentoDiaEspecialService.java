@@ -3,7 +3,7 @@ package com.josue.KartingDescuentoDiaEspecial.services;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public class DescuentoDiaEspecialService {
 	// Input: Una fecha
 	// Description: Calcula el descuento que se aplica si el dia introducido es un fin de semana o un feriado
 	// Output: El porcentaje de descuento para la reserva
-	public Double esDiaEspecial(LocalDate date) {
+	public Double esDiaEspecial(LocalDateTime date) {
 		double descuentoDiaEspecial = 0.0;
 
 		DayOfWeek dayOfWeek = date.getDayOfWeek();

@@ -1,15 +1,15 @@
 import httpClient from "../http-common";
 
 const saveReceipt = (receipt) => {
-	return httpClient.post('/api/receipt/', receipt);
+	return httpClient.post('/api/comprobante/', receipt);
 };
 
-const getLapReports = (clientId) => {
-	return httpClient.get('/api/receipt/lapReport');
+const getLapReports = () => {
+	return httpClient.get('/api/reporte/reporteVueltas');
 }
 
-const getGroupReports = (clientId) => {
-	return httpClient.get('/api/receipt/groupReport');
+const getGroupReports = () => {
+	return httpClient.get('/api/reporte/reporteGrupo');
 }
 
 export default { saveReceipt, getLapReports, getGroupReports };

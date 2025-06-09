@@ -67,11 +67,11 @@ const ClientList = () => {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 
-		if (name === "clientRut") {
-			// Only allow numbers and 'K'
+		if (name === "rutCliente") {
+			// Clean input: remove dots and dashes, allow only numbers and K
 			let cleaned = value.replace(/[^\dkK]/g, "").toUpperCase();
 
-			// Limit to 9 characters
+			// Limit to 9 characters (8 digits + 1 check digit)
 			cleaned = cleaned.slice(0, 9);
 
 			// Format RUT: XX.XXX.XXX-X
@@ -90,8 +90,18 @@ const ClientList = () => {
 					checkDigit;
 			}
 
+			// Check for duplicate RUT (excluding the current editing client)
+			const duplicate = clients.some(
+				(client) =>
+					client.rutCliente === formatted && client.id !== editingClient.id
+			);
+			if (duplicate) {
+				alert("Ya existe un cliente con ese RUT.");
+				return;
+			}
+
 			setEditingClient({ ...editingClient, [name]: formatted });
-		} else if (name === "clientEmail") {
+		} else if (name === "mailCliente") {
 			// Validate email format
 			if (!/\S+@\S+\.\S+/.test(value)) {
 				alert("Formato de correo electrónico inválido");
@@ -184,8 +194,8 @@ const ClientList = () => {
 							<label>Nombre:</label>
 							<input
 								type="text"
-								name="clientName"
-								value={editingClient.clientName}
+								name="nombreCliente"
+								value={editingClient.nombreCliente}
 								onChange={handleInputChange}
 								style={{ marginLeft: "1rem", padding: "0.5rem" }}
 							/>
@@ -194,8 +204,8 @@ const ClientList = () => {
 							<label>RUT:</label>
 							<input
 								type="text"
-								name="clientRut"
-								value={editingClient.clientRut}
+								name="rutCliente"
+								value={editingClient.rutCliente}
 								onChange={handleInputChange}
 								style={{ marginLeft: "1rem", padding: "0.5rem" }}
 							/>
@@ -204,8 +214,8 @@ const ClientList = () => {
 							<label>Email:</label>
 							<input
 								type="email"
-								name="clientEmail"
-								value={editingClient.clientEmail}
+								name="mailCliente"
+								value={editingClient.mailCliente}
 								onChange={handleInputChange}
 								style={{ marginLeft: "1rem", padding: "0.5rem" }}
 							/>
@@ -214,8 +224,8 @@ const ClientList = () => {
 							<label>Teléfono:</label>
 							<input
 								type="text"
-								name="clientPhone"
-								value={editingClient.clientPhone}
+								name="telefonoCliente"
+								value={editingClient.telefonoCliente}
 								onChange={handleInputChange}
 								style={{ marginLeft: "1rem", padding: "0.5rem" }}
 							/>
@@ -224,13 +234,13 @@ const ClientList = () => {
 							<label>Fecha de Nacimiento:</label>
 							<input
 								type="date"
-								name="clientBirthDate"
-								value={editingClient.clientBirthDate}
+								name="fechaNacimiento"
+								value={editingClient.fechaNacimiento}
 								onChange={handleInputChange}
 								style={{ marginLeft: "1rem", padding: "0.5rem" }}
 							/>
 						</div>
-						{/* Save Button */}
+						{/* Save and Cancel Buttons */}
 						<button
 							type="submit"
 							style={{
@@ -248,7 +258,6 @@ const ClientList = () => {
 						>
 							Guardar
 						</button>
-						{/* Cancel Button */}
 						<button
 							type="button"
 							onClick={() => setEditingClient(null)}
@@ -295,12 +304,12 @@ const ClientList = () => {
 									index % 2 === 0 ? tableStyles.evenRow : tableStyles.oddRow
 								}
 							>
-								<td style={tableStyles.tableCell}>{client.clientName}</td>
-								<td style={tableStyles.tableCell}>{client.clientRut}</td>
-								<td style={tableStyles.tableCell}>{client.clientEmail}</td>
-								<td style={tableStyles.tableCell}>{client.clientPhone}</td>
+								<td style={tableStyles.tableCell}>{client.nombreCliente}</td>
+								<td style={tableStyles.tableCell}>{client.rutCliente}</td>
+								<td style={tableStyles.tableCell}>{client.mailCliente}</td>
+								<td style={tableStyles.tableCell}>{client.telefonoCliente}</td>
 								<td style={tableStyles.tableCell}>
-									{formatDate(client.clientBirthDate)}
+									{formatDate(client.fechaNacimiento)}
 								</td>
 								<td style={tableStyles.tableCell}>
 									<button

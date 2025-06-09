@@ -28,4 +28,16 @@ public class ComprobanteController {
 		ComprobanteEntity comprobanteGuardado = comprobanteService.crearComprobante(comprobante);
 		return ResponseEntity.ok(comprobanteGuardado);
 	}
+
+	@GetMapping("/reporteVueltas")
+	public ResponseEntity<List<Object[]>> getReservationSummaryReport(){
+		List<Object[]> resultado = comprobanteRepository.getReservationSummaryReport();
+		return ResponseEntity.ok(resultado);
+	}
+
+	@GetMapping("/reporteGrupo")
+	public ResponseEntity<List<Object[]>> getReservationGroupReport(){
+		List<Object[]> resultado = comprobanteRepository.getRiderGroupSizeReport();
+		return ResponseEntity.ok(resultado);
+	}
 }

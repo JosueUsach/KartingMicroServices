@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 @RestController
@@ -15,10 +15,9 @@ public class DescuentoDiaEspecialController {
 	private DescuentoDiaEspecialService descuentoDiaEspecialService;
 
 	@GetMapping("/{fecha}")
-	public ResponseEntity<Double> getDiaEspecial(@PathVariable String fecha) {
+	public ResponseEntity<Double> getDiaEspecial(@PathVariable LocalDateTime fecha) {
 		try {
-			LocalDate date = LocalDate.parse(fecha); // Expects format: yyyy-MM-dd
-			double descuento = descuentoDiaEspecialService.esDiaEspecial(date);
+			double descuento = descuentoDiaEspecialService.esDiaEspecial(fecha);
 			return ResponseEntity.ok(descuento);
 		} catch (DateTimeParseException e) {
 			return ResponseEntity.badRequest().build();

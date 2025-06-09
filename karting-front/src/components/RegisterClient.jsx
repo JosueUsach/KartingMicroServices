@@ -110,11 +110,20 @@ const RegisterClient = () => {
 		e.preventDefault();
 
 		if (!validateForm()) {
-			return; // Stop submission if validation fails
+			return;
 		}
 
+		// Map frontend fields to backend fields
+		const backendForm = {
+			rutCliente: form.clientRut,
+			nombreCliente: form.clientName,
+			mailCliente: form.clientEmail,
+			telefonoCliente: form.clientPhone,
+			fechaNacimiento: form.clientBirthDate,
+		};
+
 		clientService
-			.registerClient(form)
+			.registerClient(backendForm)
 			.then((res) => {
 				console.log("Registro", res);
 				if (res.data == "") {
