@@ -2,12 +2,14 @@ import Beams from "./Beams.jsx"; // Adjust the import path as necessary
 
 const Home = () => {
 	return (
-		<div style={{ position: "relative", minHeight: "100vh" }}>
+		<div
+			style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh" }}
+		>
 			{/* Background Beams component */}
 			<div
 				style={{
 					position: "absolute",
-					top: 0,
+					top: 48,
 					left: 0,
 					width: "100%",
 					height: "100%",
