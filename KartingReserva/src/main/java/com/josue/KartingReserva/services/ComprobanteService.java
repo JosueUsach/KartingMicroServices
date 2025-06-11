@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -66,6 +65,9 @@ public class ComprobanteService {
 			descuentoDiaEspecial = -(descuentoDiaEspecial * costoInicial);
 
 			double costoFinal = costoInicial + descuentoGrupo + descuentoFrecuencia + descuentoCumple + descuentoDiaEspecial;
+
+			if (costoFinal < 0)
+				costoFinal = 0;
 
 
 			// Se guardan todos los datos del cliente y su comprobante
